@@ -1,0 +1,7 @@
+{
+  "name": "ratewise-store-ratings",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {"dev": "concurrently -n api,web -c blue,green \"npm:dev:server\" \"npm:dev:client\"", "dev:server": "npm --workspace server run dev", "dev:client": "npm --workspace client run dev", "start": "npm --workspace server start"},
+  "devDependencies": {"concurrently": "^9.1.2"}
+}

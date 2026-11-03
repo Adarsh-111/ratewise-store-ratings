@@ -1,0 +1,10 @@
+import { z } from 'zod';
+const password = z.string().min(8).max(16).regex(/[A-Z]/, 'Must include an uppercase letter').regex(/[^A-Za-z0-9]/, 'Must include a special character');
+const name = z.string().trim().min(20).max(60);
+const address = z.string().trim().max(400);
+export const signupSchema = z.object({ name, email: z.string().trim().email().max(254), address, password });
+export const loginSchema = z.object({ email: z.string().trim().email().max(254), password: z.string().min(1) });
+export const passwordSchema = z.object({ password });
+export const ratingSchema = z.object({ score: z.coerce.number().int().min(1).max(5) });
+export const userSchema = z.object({ name, email: z.string().trim().email().max(254), address, password, role: z.enum(['admin', 'user', 'owner']) });
+export const storeSchema = z.object({ name: z.string().trim().min(2).max(120), email: z.string().trim().email().max(254), address, ownerId: z.coerce.number().int().positive().nullable().optional() });
