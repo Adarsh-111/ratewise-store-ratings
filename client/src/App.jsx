@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Activity, ArrowDownUp, ArrowRight, BadgeCheck, Building2, ChevronDown, CircleHelp, LayoutDashboard, LogOut, MapPin, Plus, Search, ShieldCheck, Sparkles, Star, Store, Users, X } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:4000/api');
 const readSession = () => { try { return JSON.parse(localStorage.getItem('ratewise-session')); } catch { return null; } };
 
 async function api(path, { token, ...options } = {}) {

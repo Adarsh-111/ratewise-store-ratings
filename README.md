@@ -13,3 +13,7 @@ Store ratings app built with React, Express, and PostgreSQL.
 Apply `server/schema.sql` to initialize the database. To create the first admin, set `ADMIN_NAME`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in `server/.env`, then run `npm --workspace server run seed:admin`.
 
 Public signup always creates a normal user. Admins create store owner accounts and stores from the admin dashboard. Passwords are hashed with bcrypt; API routes enforce role access and validate inputs server side.
+
+## Deploy on Render
+
+This repository includes a Render Blueprint for a single service that serves both the built React app and the Express API. Create a new Blueprint from this GitHub repository, then set `DATABASE_URL` to the Neon connection string and `JWT_SECRET` to a random secret of at least 32 characters when prompted. The Neon schema must already be applied. Render builds the frontend and starts the API with `npm start`.
